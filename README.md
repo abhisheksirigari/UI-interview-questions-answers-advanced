@@ -81,5 +81,66 @@ TypeScript
 At this point, the variable will not give error as we have accessed the Student class outside the module with the help of export keyword in TypeScript.
 
 
+## What is CI-CD and What are benefits of CI-CD ?
+```javascrpt
+Continuous Integration and continuous Delivery (CI/CD) is a set of software practices and techniques that enable the frequent release of small batches of code changes, with extensive visibility and traceability. It typically involves the creation of a largely automated pipeline that orchestrates the build, test and deployment of software across staged environments, ultimately leading to deployment in production.
+
+benefits:
+CI/CD offers several important benefits for development and test organizations:
+Faster identification and resolution of defects : CI/CD allows an elegant way to establish the appropriate quality gates in the development and testing process. A fast feedback loop to the developers ensures that bugs are addressed early in the development cycle
+Reduced overhead costReduced overhead cost Finding a bug at the development stage is the cheapest possible way to find it. If the same bug was to be fixed in any other environment, it would cost more. CI/CD requires some upfront overhead cost, but these are more than offset by the time and expense saved along the way.
+Better quality assuranceBetter quality assurance CI/CD enables QA teams to release deployable software at any point in time. Without it, projects are prone to delayed releases because of unforeseen issues which arise at any point in the traditional development and test process.
+Reduced assumptionsReduced assumptions CI/CD replaces testing assumptions with knowledge, thereby eliminating all cross-platform errors at the development stage.
+Faster time to marketFaster time to market Faster test and QA cycles enable organizations to get quality products and services to market faster and more efficiently.
+Software health measurabilitySoftware health measurability By establishing continuous testing into the automated integration process, software health attributes such as complexity can be tracked over time.
+Better project visibility Frequent code integration provides the opportunity to identify trends in build success and failure and make informed decisions to address them. With CI/CD, dev and test teams can access real-time data on the code quality metrics to innovate new improvements and support decisions.
+```
+
+## One of your teammates accidentally deleted a branch, and has already pushed the changes to the central git repo. There are no other git repos, and none of your other teammates had a local copy. How would you recover this branch?
+```javascript
+answer: Check out the latest commit to this branch in the reflog, and then check it out as a new branch.
+```
+
+## How do you find a list of files that has changed in a particular commit?
+```javascript
+answer:
+git diff-tree -r {hash}
+Given the commit hash, this will list all the files that were changed or added in that commit. The -r flag makes the command list individual files, rather than collapsing them into root directory names only.
+
+The output will also include some extra information, which can be easily suppressed by including a couple of flags:
+
+git diff-tree --no-commit-id --name-only -r {hash}
+Here --no-commit-id will supress the commit hashes from appearing in the output, and --name-only will only print the file names, instead of their paths.
+```
+
+## How do you squash last N commits into a single commit?
+```javascript
+answer:
+Squashing multiple commits into a single commit will overwrite history, and should be done with caution. However, this is useful when working in feature branches. To squash the last N commits of the current branch, run the following command (with {N} replaced with the number of commits that you want to squash):
+
+git rebase -i HEAD~{N}
+Upon running this command, an editor will open with a list of these N commit messages, one per line. Each of these lines will begin with the word “pick”. Replacing “pick” with “squash” or “s” will tell Git to combine the commit with the commit before it. To combine all N commits into one, set every commit in the list to be squash except the first one. Upon exiting the editor, and if no conflict arises, git rebase will allow you to create a new commit message for the new combined commit.
+```
+
+## What is GitFlow?
+```javascript
+Git is a version control system. And GitFlow is a branching model of Git. People uses GitFlow for manage branches better and more logical.
+Master
+This is the live branch of the project. This is a production code. You need be careful when you commit this branch.
+Hotfix
+When you need to solve something in production code you can use Hotfix branch and open pull-request for master branch.
+Develop
+This branch same with master branch but you are using this branch for new feature developments. You can’t commit directly but it’s a better than use master branch. You clone this branch from master only one time. Same time you need merge hotfix to this branch.
+Feature
+Feature is the branch for the our new features on project. You clone new branch from development and start coding new features on this branch. After you will open pull-request on development branch and after that your code will be merged on development branch. But you need to be stay sync with development for avoid conflicts.
+Release
+When you finish all new feature development on dev branch you need test new features. You can create release branch and test changes before merge on production code. This environment named as a Staging. It means before production last chance to test everything.
+
+BUT
+GitFlow not solves all problem on branching. But it offers you a more logical branch structure. And this logical branch structure will provide a more efficient working environment over time.
+```
+
+
+
 
 
