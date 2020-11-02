@@ -140,7 +140,76 @@ BUT
 GitFlow not solves all problem on branching. But it offers you a more logical branch structure. And this logical branch structure will provide a more efficient working environment over time.
 ```
 
+## How would you check if a number is an integer?
+```javascript
+Answer
+A very simply way to check if a number is a decimal or integer is to see if there is a remainder left when you divide by 1.
 
+function isInt(num) {
+  return num % 1 === 0;
+}
+
+console.log(isInt(4)); // true
+console.log(isInt(12.2)); // false
+console.log(isInt(0.3)); // false
+
+```
+
+## Given two strings, return true if they are anagrams of one another "Mary" is an anagram of "Army"
+```javascript
+var firstWord = "Mary";
+var secondWord = "Army";
+
+isAnagram(firstWord, secondWord); // true
+
+function isAnagram(first, second) {
+  // For case insensitivity, change both words to lowercase.
+  var a = first.toLowerCase();
+  var b = second.toLowerCase();
+
+  // Sort the strings, and join the resulting array to a string. Compare the results
+  a = a.split("").sort().join("");
+  b = b.split("").sort().join("");
+
+  return a === b;
+}
+```
+
+## Create a function that will evaluate if a given expression has balanced parentheses -- Using stacks In this example, 
+## we will only consider "{}" as valid parentheses {}{} would be considered balancing. {{{}} is not balanced
+```javascript
+var expression = "{{}}{}{}"
+var expressionFalse = "{}{{}";
+
+isBalanced(expression); // true
+isBalanced(expressionFalse); // false
+isBalanced(""); // true
+
+function isBalanced(expression) {
+  var checkString = expression;
+  var stack = [];
+
+  // If empty, parentheses are technically balanced
+  if (checkString.length <= 0) return true;
+
+  for (var i = 0; i < checkString.length; i++) {
+    if(checkString[i] === '{') {
+      stack.push(checkString[i]);
+    } else if (checkString[i] === '}') {
+      // Pop on an empty array is undefined
+      if (stack.length > 0) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+  }
+
+  // If the array is not empty, it is not balanced
+  if (stack.pop()) return false;
+  return true;
+}
+```
 
 
 
