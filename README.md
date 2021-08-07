@@ -81,6 +81,84 @@ TypeScript
 At this point, the variable will not give error as we have accessed the Student class outside the module with the help of export keyword in TypeScript.
 
 
+## 3) What are the new features introduced in ES6?
+```javascript
+The new features that are introduced in ES6 are listed as follows:
+
+Let and const keywords.
+Default Parameters.
+Arrow functions.
+Template Literals.
+Object Literals.
+Rest and spread operators.
+Destructuring assignment.
+Modules, Classes, Generators, and iterators.
+Promises,
+Constants (Immutable variables)
+Scoping
+Extended parameter handling
+Extended literals
+Enhanced Regular expressions
+Enhanced object properties.
+Destructuring Assignment
+Symbol Type
+Map/Set & WeakMap/WeakSet
+Typed Arrays
+Built-in Methods
+Metaprogramming
+Internationalization and Localization.
+```
+
+## 12) What do you understand by Generator function?
+```javascript
+A generator provides us a new way to work with iterators and functions. The generator is a special kind of function that may be paused in the middle either one or many times and can be resumed later. The declaration function* (function keyword followed by an asterisk) is used to define a generator function.
+
+When the generator gets called, it does not run its code. Instead, it returns a special object, which is called a Generator object to manage the execution. Let us see an example of generators in ES6.
+
+To learn more about Generators in ES6, follow this link ES6 Generators.
+
+Example
+
+function* gen()    
+{    
+yield 100;    
+yield;    
+yield 200;    
+}    
+// Calling the Generator Function    
+var mygen = gen();    
+console.log(mygen.next().value);    
+console.log(mygen.next().value);    
+console.log(mygen.next().value);    
+Output
+
+100
+undefined
+200
+```
+
+## 27) List the new Array methods and new String methods introduced in ES6?
+```javascript
+
+There are many array methods available in ES6, which are listed below:
+Array.of()
+Array.from()
+Array.prototype.copyWithin()
+Array.prototype.find()
+Array.prototype.findIndex()
+Array.prototype.entries()
+Array.prototype.keys()
+Array.prototype.values()
+Array.prototype.fill()
+To learn more about the above array methods, follow this link: ES6 Array methods.
+
+There are four string methods introduced in ES6 that are listed as follows:
+string.startsWith()
+string.endsWith()
+string.includes()
+string.repeat()
+```
+
 ## What is CI-CD and What are benefits of CI-CD ?
 ```javascrpt
 Continuous Integration and continuous Delivery (CI/CD) is a set of software practices and techniques that enable the frequent release of small batches of code changes, with extensive visibility and traceability. It typically involves the creation of a largely automated pipeline that orchestrates the build, test and deployment of software across staged environments, ultimately leading to deployment in production.
@@ -210,6 +288,56 @@ function isBalanced(expression) {
   return true;
 }
 ```
+
+## Explain briefly about classes, modules, and proxies?
+```javascript
+Classes: classes are based on the OOP style that is object-oriented programming. The class declaration makes the patterns easier to use. It supports inheritance, base class access, static methods, and constructors.
+Modules: it defines the patterns from popular javascript module loaders. It supports exporting or importing the values from or to modules without the global namespace. It supports marking the value as the default exported value and max-min values.
+Proxies: It enables object creation with a wide variety of behaviours available to host objects. It can be used for logging, profiling, etc.
+```
+
+## What is use of Proxies in es6?
+```javascript
+The Proxy object is used to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc).
+
+There are 3 key terms we need to define before we proceed:
+
+handler — the placeholder object which contains the trap(s)
+traps — the method(s) that provide property access
+target — object which the proxy virtualizes
+Syntax
+
+const p = new Proxy(target, handler)
+Example:
+
+const handler = {
+  get: function(obj, prop) {
+    return prop in obj ?
+      obj[prop] :
+      37;
+  }
+};
+
+const p = new Proxy({}, handler);
+p.a = 1;
+p.b = undefined;
+
+console.log(p.a, p.b); 
+//  1, undefined
+
+console.log('c' in p, p.c); 
+//  false, 37
+There are many real-world applications for Proxies
+
+validation
+value correction
+property lookup extensions
+tracing property accesses
+revocable references
+implementing the DOM in javascript
+```
+
+
 
 
 
